@@ -13,10 +13,11 @@ function App() {
     },
   });
 
-  const { data: items = [], isLoading: itemsLoading } = useQuery({
+  const { data: items, isLoading: itemsLoading } = useQuery({
     queryKey: ["items"],
     queryFn: async () => {
       const res = await fetch("/api/items");
+      console.log("Fetch /api/items response:", res);
       if (!res.ok) throw new Error("Failed to fetch items");
       return res.json();
     },
@@ -29,9 +30,13 @@ function App() {
 
       <hr />
 
-      {usersLoading ? <p>Loading users...</p> : <UserList users={users} />}
+      {/* {usersLoading ? <p>Loading users...</p> : <UserList users={users} />} */}
 
-      {itemsLoading ? <p>Loading items...</p> : <ItemList items={items} />}
+      {itemsLoading ? (
+        <p>Loading items...</p>
+      ) : (
+        <ItemList items={items || []} />
+      )}
     </div>
   );
 }
