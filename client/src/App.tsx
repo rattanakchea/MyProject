@@ -30,7 +30,7 @@ function App() {
 
       <hr />
 
-      {/* {usersLoading ? <p>Loading users...</p> : <UserList users={users} />} */}
+      {usersLoading ? <p>Loading users...</p> : <UserList users={users} />}
 
       {itemsLoading ? (
         <p>Loading items...</p>
