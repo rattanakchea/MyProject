@@ -8,7 +8,21 @@ import { useEffect, useMemo, useState } from "react";
 
 // static data, outside component to avoid re-render
 // const USERS = ["Rattanak", "Saysomaly", "Sovandaro", "Devin", "Julina"];
-const USERS = Array.from({ length: 100000 }, (_, i) => `User ${i}`);
+const USERS = Array.from({ length: 10000 }, (_, i) => `User ${i}`);
+
+// helper func
+function highlightMatch(text: string, query: string) {
+  if (!query) return text;
+
+  const parts = text.split(new RegExp(`(${query})`, "gi"));
+  return parts.map((part, index) =>
+    part.toLowerCase() === query.toLowerCase() ? (
+      <strong key={index}>{part}</strong>
+    ) : (
+      part
+    ),
+  );
+}
 
 export function UserSearch() {
   const [search, setSearch] = useState("");
@@ -44,7 +58,7 @@ export function UserSearch() {
       ></input>
       <ul>
         {filteredUsers.map((user) => (
-          <li key={user}>{user}</li>
+          <li key={user}>{highlightMatch(user, debouncedSearch)}</li>
         ))}
       </ul>
     </div>

@@ -25,3 +25,12 @@ This is the proper pattern: page components handle data fetching, then pass data
 
 - Setup pico minimal styles
 - Setup React Route
+
+## Plan
+
+Build a dropdown menu with
+
+- options to select a component name from the the dropdown. i.e userSearch.tsx, itemList.tsx
+- After an option is selected, the component is rendered in the UI below
+
+The goal to allow interacting with components built quickly.
