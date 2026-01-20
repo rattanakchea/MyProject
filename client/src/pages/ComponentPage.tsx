@@ -1,3 +1,9 @@
+import { UserSearch } from "../components/UserSearch";
+
 export function ComponentPage() {
-  return <div className="container">Component Page</div>;
+  return (
+    <div className="container">
+      <UserSearch></UserSearch>
+    </div>
+  );
 }
