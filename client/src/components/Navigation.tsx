@@ -19,6 +19,9 @@ export function Navigation() {
         <li>
           <Link to="/components">Components</Link>
         </li>
+        <li>
+          <Link to="/showcase">Showcase</Link>
+        </li>
       </ul>
     </nav>
   );

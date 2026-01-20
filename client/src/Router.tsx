@@ -5,6 +5,7 @@ import App from "./App";
 import { UserList } from "./components/UserList";
 import { ItemsPage } from "./pages/ItemsPage";
 import { ComponentPage } from "./pages/ComponentPage";
+import { ComponentShowcase } from "./pages/ComponentShowcase";
 
 export function Router() {
   return (
@@ -15,6 +16,7 @@ export function Router() {
         <Route path="/users" element={<UserList users={[]} />} />
         <Route path="/items" element={<ItemsPage />} />
         <Route path="/components" element={<ComponentPage />} />
+        <Route path="/showcase" element={<ComponentShowcase />} />
       </Routes>
     </BrowserRouter>
   );
