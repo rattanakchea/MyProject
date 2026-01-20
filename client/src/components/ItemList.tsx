@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 interface Item {
@@ -11,7 +12,7 @@ interface Item {
 
 export function ItemList({ items }: { items: Item[] }) {
   return (
-    <div>
+    <div className="container">
       <h2>Items</h2>
       {items.length === 0 ? (
         <p>No items yet</p>

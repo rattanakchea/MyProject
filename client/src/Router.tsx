@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import App from "./App";
 import { UserList } from "./components/UserList";
-import { ItemList } from "./components/ItemList";
+import { ItemsPage } from "./pages/ItemsPage";
+import { ComponentPage } from "./pages/ComponentPage";
 
 export function Router() {
   return (
@@ -12,7 +13,8 @@ export function Router() {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/users" element={<UserList users={[]} />} />
-        <Route path="/items" element={<ItemList items={[]} />} />
+        <Route path="/items" element={<ItemsPage />} />
+        <Route path="/components" element={<ComponentPage />} />
       </Routes>
     </BrowserRouter>
   );

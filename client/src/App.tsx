@@ -24,7 +24,7 @@ function App() {
   });
 
   return (
-    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px" }}>
+    <div className="container" style={{ margin: "0 auto", padding: "20px" }}>
       <h1>📱 Full-Stack App</h1>
       <p>This is your full-stack monorepo project!</p>
 
