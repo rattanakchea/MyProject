@@ -48,15 +48,15 @@ export function ComponentShowcase() {
 
   console.log("componentNames:", componentNames);
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
+    <div style={{ display: "flex", flex: 1 }}>
       <div
         style={{
-          width: "300px",
-          padding: "10px",
-          borderRight: "1px solid #ccc",
+          display: "flex",
+          flexDirection: "column",
+          flex: "0 0 15em",
         }}
       >
-        <h2>Component Showcase</h2>
+        <h3>Component Showcase</h3>
         <label>
           Select component:
           <select
@@ -70,6 +70,8 @@ export function ComponentShowcase() {
             ))}
           </select>
         </label>
+
+        <p style={{ marginTop: "auto" }}>built with love</p>
       </div>
 
       <div
