@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { ItemList } from "../components/ItemList";
+import { ItemList } from "./ItemList";
 
 interface Item {
   id: number;

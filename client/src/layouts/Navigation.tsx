@@ -14,7 +14,7 @@ export function Navigation() {
           <Link to="/items">Items</Link>
         </li>
         <li>
-          <Link to="/users">Users</Link>
+          <Link to="/todoApp">Todo App</Link>
         </li>
         <li>
           <Link to="/components">Components</Link>

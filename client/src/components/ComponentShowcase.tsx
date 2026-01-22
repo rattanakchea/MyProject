@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import * as Components from "../components";
+import * as Components from ".";
 console.log("typeof component:", typeof Components);
 
 const mockUsers = [
