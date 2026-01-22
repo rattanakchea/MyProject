@@ -47,7 +47,7 @@ export function UserSearch() {
   // );
 
   return (
-    <div className="container">
+    <div className="">
       <h2>User Search</h2>
 
       <input

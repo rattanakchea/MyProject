@@ -48,20 +48,38 @@ export function ComponentShowcase() {
 
   console.log("componentNames:", componentNames);
   return (
-    <div className="container">
-      <h2>Component Showcase</h2>
-      <label>
-        Select component:
-        <select value={selected} onChange={(e) => setSelected(e.target.value)}>
-          {componentNames.map((name) => (
-            <option key={name} value={name}>
-              {name}
-            </option>
-          ))}
-        </select>
-      </label>
+    <div style={{ display: "flex", height: "100vh" }}>
+      <div
+        style={{
+          width: "300px",
+          padding: "10px",
+          borderRight: "1px solid #ccc",
+        }}
+      >
+        <h2>Component Showcase</h2>
+        <label>
+          Select component:
+          <select
+            value={selected}
+            onChange={(e) => setSelected(e.target.value)}
+          >
+            {componentNames.map((name) => (
+              <option key={name} value={name}>
+                {name}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
 
-      <div style={{ marginTop: 20 }}>
+      <div
+        style={{
+          flex: 1,
+          marginTop: 20,
+          backgroundColor: "#f9f9f9",
+          padding: "10px",
+        }}
+      >
         {SelectedComponent ? (
           <SelectedComponent {...(mockProps[selected] || {})} />
         ) : (
