@@ -23,6 +23,8 @@ export function todosReducer(state: any, action: Action) {
       return { ...state, ...payload };
     case "LOAD_SUCCESS":
       return { ...state, ...payload };
+    case "ADD_OPTIMISTIC":
+      return { ...state, todos: [payload.todo, ...state.todos] };
     default:
       return state;
   }

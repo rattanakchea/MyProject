@@ -2,7 +2,11 @@ import { createMockTodos, Todo } from "./todo.model";
 import { TodoRepository } from "./TodoRepository";
 
 export class MockTodoRepository implements TodoRepository {
-  private todos: Todo[] = createMockTodos(5);
+  private todos: Todo[] = [];
+
+  constructor() {
+    this.todos = createMockTodos(5);
+  }
 
   async getTodos(): Promise<Todo[]> {
     return this.todos;

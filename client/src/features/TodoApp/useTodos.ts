@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from "react";
 import { todosReducer } from "./todosReducer";
 import { TodoRepository } from "./repository/TodoRepository";
-import { createMockTodos, State } from "./repository/todo.model";
+import { createMockTodos, State, Todo } from "./repository/todo.model";
 
 const intialState: State = {
   todos: [],
@@ -25,7 +25,16 @@ export function useTodos(repo: TodoRepository) {
     });
   }, [repo]);
 
-  const addTodo = async (title: string) => {};
+  const addTodo = async (title: string) => {
+    const temp: Todo = {
+      id: crypto.randomUUID(),
+      title,
+      completed: false,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+    };
+    dispatch({ type: "ADD_OPTIMISTIC", payload: { todo: temp } });
+  };
 
   return { state, addTodo };
 }

@@ -1,6 +1,7 @@
 import { MockTodoRepository } from "../repository/mockTodoRepository";
 import { TodoRepository } from "../repository/TodoRepository";
 import { useTodos } from "../useTodos";
+import { TodoInput } from "./TodoInput";
 import { TodoList } from "./TodoList";
 
 // take a prop repo: TodoRepository
@@ -25,6 +26,7 @@ export function TodoApp({ repo }: { repo: TodoRepository }) {
     <div className="container">
       <h2> TodoApp Component</h2>
 
+      <TodoInput onAdd={addTodo} />
       <TodoList todos={todos} onToggle={() => {}} onDelete={() => {}} />
     </div>
   );
