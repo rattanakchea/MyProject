@@ -19,7 +19,7 @@ const repo = new MockTodoRepository();
 
 // { repo } → object destructuring
 export function TodoApp() {
-  const { state, addTodo } = useTodos(repo);
+  const { state, addTodo, toggleTodo, deleteTodo } = useTodos(repo);
   const { todos, loading, error } = state;
 
   if (loading) return <p>Loading...</p>;
@@ -29,7 +29,7 @@ export function TodoApp() {
       <h2> TodoApp Component</h2>
 
       <TodoInput onAdd={addTodo} />
-      <TodoList todos={todos} onToggle={() => {}} onDelete={() => {}} />
+      <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
     </div>
   );
 }

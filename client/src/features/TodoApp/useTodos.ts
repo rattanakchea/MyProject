@@ -42,5 +42,16 @@ export function useTodos(repo: TodoRepository) {
     }
   };
 
-  return { state, addTodo };
+  const toggleTodo = async (todo: Todo) => {
+    const updated = { ...todo, completed: !todo.completed };
+    dispatch({ type: "UPDATE", payload: { todo: updated } });
+    await repo.updateTodo(updated);
+  };
+
+  const deleteTodo = async (id: string) => {
+    dispatch({ type: "DELETE", payload: { id } });
+    await repo.deleteTodo(id);
+  };
+
+  return { state, addTodo, toggleTodo, deleteTodo };
 }
