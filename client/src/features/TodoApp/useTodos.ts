@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from "react";
 import { todosReducer } from "./todosReducer";
 import { TodoRepository } from "./repository/TodoRepository";
-import { createMockTodos, State, Todo } from "./repository/todo.model";
+import { State, Todo } from "./repository/todo.model";
 
 const intialState: State = {
   todos: [],
@@ -15,25 +15,31 @@ export function useTodos(repo: TodoRepository) {
 
   // fetchTodos function to load todos from an API
   useEffect(() => {
+    console.log("Fetched usedTodo:");
+
     dispatch({ type: "LOAD_START", payload: { loading: true, error: null } });
     repo.getTodos().then((todos) => {
-      console.log("Fetched todos:", todos);
+      // tood when this line run twice?
       dispatch({
         type: "LOAD_SUCCESS",
         payload: { todos, loading: false, error: null },
       });
     });
-  }, [repo]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [repo]); // Only run on mount, not when repo changes
 
   const addTodo = async (title: string) => {
-    const temp: Todo = {
-      id: crypto.randomUUID(),
-      title,
-      completed: false,
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
-    };
-    dispatch({ type: "ADD_OPTIMISTIC", payload: { todo: temp } });
+    try {
+      await repo.createTodo(title);
+      // Reload all todos from repository
+      const todos = await repo.getTodos();
+      dispatch({
+        type: "LOAD_SUCCESS",
+        payload: { todos, loading: false, error: null },
+      });
+    } catch (error) {
+      dispatch({ type: "ERROR", payload: { error } });
+    }
   };
 
   return { state, addTodo };

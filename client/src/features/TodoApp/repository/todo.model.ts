@@ -14,7 +14,7 @@ export type State = {
 
 export function createMockTodos(count = 5): Todo[] {
   return Array.from({ length: count }, (_, i) => ({
-    id: i + 1,
+    id: crypto.randomUUID(),
     title: `Mock task ${i + 1}`,
     completed: false,
     createdAt: Date.now(),

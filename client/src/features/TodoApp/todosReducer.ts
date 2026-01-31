@@ -1,7 +1,7 @@
 // To convert from useState to useReducer:
-// Dispatch actions from event handlers.
-// Write a reducer function that returns the next state for a given state and action.
-// Replace useState with useReducer.
+// a Reducer deals with state transitions based on action types
+
+import { State } from "./repository/todo.model";
 
 type TodoActionType =
   | "ADD_OPTIMISTIC"
@@ -15,7 +15,7 @@ type Action = { type: TodoActionType; payload: { [key: string]: any } };
 
 // todo Reducer
 // action is any object with a type property
-export function todosReducer(state: any, action: Action) {
+export function todosReducer(state: State, action: Action) {
   const { type, payload } = action;
 
   switch (type) {
@@ -24,7 +24,19 @@ export function todosReducer(state: any, action: Action) {
     case "LOAD_SUCCESS":
       return { ...state, ...payload };
     case "ADD_OPTIMISTIC":
-      return { ...state, todos: [payload.todo, ...state.todos] };
+      return { ...state, todos: [...state.todos, payload.todo] };
+    case "UPDATE":
+      return {
+        ...state,
+        todos: state.todos.map((t) =>
+          t.id === payload.todo.id ? payload.todo : t,
+        ),
+      };
+    case "DELETE":
+      return {
+        ...state,
+        todos: state.todos.filter((t) => t.id !== payload.id),
+      };
     default:
       return state;
   }

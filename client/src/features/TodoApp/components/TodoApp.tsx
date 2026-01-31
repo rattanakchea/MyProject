@@ -15,8 +15,10 @@ import { TodoList } from "./TodoList";
  * @note The `repo` parameter is currently unused. Consider using it to fetch todos or implement todo operations.
  */
 
+const repo = new MockTodoRepository();
+
 // { repo } → object destructuring
-export function TodoApp({ repo }: { repo: TodoRepository }) {
+export function TodoApp() {
   const { state, addTodo } = useTodos(repo);
   const { todos, loading, error } = state;
 

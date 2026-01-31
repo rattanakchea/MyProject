@@ -5,7 +5,7 @@ export class MockTodoRepository implements TodoRepository {
   private todos: Todo[] = [];
 
   constructor() {
-    this.todos = createMockTodos(5);
+    this.todos = createMockTodos(2);
   }
 
   async getTodos(): Promise<Todo[]> {
@@ -20,7 +20,7 @@ export class MockTodoRepository implements TodoRepository {
       createdAt: Date.now(),
       updatedAt: Date.now(),
     };
-    this.todos.push(newTodo);
+    this.todos.unshift(newTodo);
     return newTodo;
   }
 

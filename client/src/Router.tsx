@@ -9,15 +9,13 @@ import SpeechReader from "./components/SpeechReader";
 import { TodoApp } from "./features/TodoApp/components/TodoApp";
 import { MockTodoRepository } from "./features/TodoApp/repository/mockTodoRepository";
 
-const repo = new MockTodoRepository();
-
 export function Router() {
   return (
     <BrowserRouter>
       <Navigation />
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/todoApp" element={<TodoApp repo={repo} />} />
+        <Route path="/todoApp" element={<TodoApp />} />
         <Route path="/items" element={<ItemsPage />} />
         <Route path="/components" element={<ComponentPage />} />
         <Route path="/showcase" element={<ComponentShowcase />} />
