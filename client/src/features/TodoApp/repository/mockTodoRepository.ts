@@ -1,6 +1,22 @@
 import { createMockTodos, Todo } from "./todo.model";
 import { TodoRepository } from "./TodoRepository";
 
+// Delay decorator
+function delayMethod(ms = 3000) {
+  return function (
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor,
+  ) {
+    const originalMethod = descriptor.value;
+    descriptor.value = async function (...args: any[]) {
+      await new Promise((resolve) => setTimeout(resolve, ms));
+      return originalMethod.apply(this, args);
+    };
+    return descriptor;
+  };
+}
+
 export class MockTodoRepository implements TodoRepository {
   private todos: Todo[] = [];
 
@@ -8,6 +24,7 @@ export class MockTodoRepository implements TodoRepository {
     this.todos = createMockTodos(2);
   }
 
+  @delayMethod()
   async getTodos(): Promise<Todo[]> {
     return this.todos;
   }
