@@ -2,7 +2,7 @@ import { createMockTodos, Todo } from "./todo.model";
 import { TodoRepository } from "./TodoRepository";
 
 // Delay decorator
-function delayMethod(ms = 3000) {
+function delayMethod(ms = 2000) {
   return function (
     target: any,
     propertyKey: string,
@@ -24,11 +24,12 @@ export class MockTodoRepository implements TodoRepository {
     this.todos = createMockTodos(2);
   }
 
-  @delayMethod()
+  @delayMethod(1000)
   async getTodos(): Promise<Todo[]> {
     return this.todos;
   }
 
+  //   @delayMethod()
   async createTodo(title: string): Promise<Todo> {
     const newTodo: Todo = {
       id: crypto.randomUUID(),

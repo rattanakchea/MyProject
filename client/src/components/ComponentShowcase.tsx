@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from "react";
 import * as Components from ".";
-console.log("typeof component:", typeof Components);
 
 const mockUsers = [
   { id: 1, name: "Alice Example", email: "alice@example.com" },
@@ -34,10 +33,11 @@ export function ComponentShowcase() {
   const componentNames = useMemo(
     () =>
       Object.keys(Components).filter((key) => {
-        const val: any = (Components as any)[key];
-        return (
-          typeof val === "function" || (typeof val === "object" && val !== null)
-        );
+        return key;
+        // const val: any = (Components as any)[key];
+        // return (
+        //   typeof val === "function" || (typeof val === "object" && val !== null)
+        // );
       }),
     [],
   );
@@ -46,7 +46,6 @@ export function ComponentShowcase() {
     Components as any
   )[selected];
 
-  console.log("componentNames:", componentNames);
   return (
     <div style={{ display: "flex", flex: 1 }}>
       <div

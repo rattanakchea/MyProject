@@ -14,6 +14,7 @@ type TodoActionType =
 type Action = { type: TodoActionType; payload: { [key: string]: any } };
 
 // todo Reducer
+// update UI state based on action types
 // action is any object with a type property
 export function todosReducer(state: State, action: Action) {
   const { type, payload } = action;

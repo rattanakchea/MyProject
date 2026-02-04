@@ -31,7 +31,6 @@ export function useTodos(repo: TodoRepository) {
   const addTodo = async (title: string) => {
     try {
       await repo.createTodo(title);
-      // Reload all todos from repository
       const todos = await repo.getTodos();
       dispatch({
         type: "LOAD_SUCCESS",
