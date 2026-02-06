@@ -42,7 +42,7 @@ export class MockTodoRepository implements TodoRepository {
     return newTodo;
   }
 
-  async updateTodo(todo: Todo) {
+  async updateTodo(todo: Todo): Promise<Todo> {
     this.todos = this.todos.map((t) =>
       t.id === todo.id ? { ...todo, updatedAt: Date.now() } : t,
     );

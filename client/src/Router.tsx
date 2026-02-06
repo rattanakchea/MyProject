@@ -7,7 +7,6 @@ import { ComponentPage } from "./components/ComponentPage";
 import { ComponentShowcase } from "./components/ComponentShowcase";
 import SpeechReader from "./components/SpeechReader";
 import { TodoApp } from "./features/TodoApp/components/TodoApp";
-import { MockTodoRepository } from "./features/TodoApp/repository/mockTodoRepository";
 
 export function Router() {
   return (

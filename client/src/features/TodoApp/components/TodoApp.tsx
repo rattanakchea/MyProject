@@ -1,5 +1,6 @@
 import { MockTodoRepository } from "../repository/mockTodoRepository";
-import { TodoRepository } from "../repository/TodoRepository";
+import { ApiTodoRepository } from "../repository/apiTodoRepository";
+
 import { useTodos } from "../useTodos";
 import { TodoInput } from "./TodoInput";
 import { TodoList } from "./TodoList";
@@ -15,11 +16,12 @@ import { TodoList } from "./TodoList";
  * @note The `repo` parameter is currently unused. Consider using it to fetch todos or implement todo operations.
  */
 
-const repo = new MockTodoRepository();
+const mockRepo = new MockTodoRepository();
+const apiRepo = new ApiTodoRepository();
 
 // { repo } → object destructuring
 export function TodoApp() {
-  const { state, addTodo, toggleTodo, deleteTodo } = useTodos(repo);
+  const { state, addTodo, toggleTodo, deleteTodo } = useTodos(apiRepo);
   const { todos, loading, error } = state;
 
   if (loading) return <p>Loading...</p>;
